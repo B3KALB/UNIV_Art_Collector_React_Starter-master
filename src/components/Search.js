@@ -12,6 +12,7 @@ import {
 } from '../api';
 
 const Search = (props) => {
+  const {setIsLoading, setSearchResults} = props;
   try {
   // Make sure to destructure setIsLoading and setSearchResults from the props
 
@@ -65,10 +66,13 @@ const Search = (props) => {
    */
 
 //Unfinshed function
-  const setSearchResults = [fetchQueryResults({ century, classification, queryString })];
-  return <form id="search" onSubmit={async (event) => {
-  event.preventDefault();
+ <form id="search" onSubmit={async (event) => {
+    event.preventDefault();
+   const isLoadingPage = await setIsLoading();
+    fetchQueryResults({ century, classification, queryString }) = await setSearchResults();
 
+    setIsLoading(false);
+    setSearchResults(isLoadingPage);
 //Unfinished function
 
 
