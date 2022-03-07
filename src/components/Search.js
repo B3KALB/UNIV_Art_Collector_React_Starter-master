@@ -77,8 +77,8 @@ const Search = (props) => {
   }
    */
 
-//Unfinshed function
- <form id="search" onSubmit={async (event) => {
+//function
+ return<form id="search" onSubmit={async (event) => {
     event.preventDefault();
     setIsLoading(true);
     try {
@@ -89,7 +89,7 @@ const Search = (props) => {
     } finally {
     setIsLoading(false);
     }
-//Unfinished function
+//function
   }}>
     <fieldset>
       <label htmlFor="keywords">Query</label>
@@ -121,9 +121,9 @@ const Search = (props) => {
         value={century} 
         onChange={(event) => setCentury(event.target.value)}>
         <option value="any">Any</option>
-        {centuryList.map((century, index) => {
+        {centuryList.map((century, id) => {
           console.log(century)
-          return (<option>{century.name}</option>)
+          return (<option key={century.id}>{century.name}</option>)
         })}
       </select>
      </fieldset>
