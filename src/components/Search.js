@@ -63,19 +63,33 @@ const Search = (props) => {
    * catch: error to console.error
    * 
    * finally: call setIsLoading, set it to false
+   *   async function fetchPage(pageUrl) {
+    setIsLoading(true);
+
+    try {
+      const results = await fetchQueryResultsFromURL(pageUrl);
+      setSearchResults(results);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
    */
 
 //Unfinshed function
  <form id="search" onSubmit={async (event) => {
     event.preventDefault();
-   const isLoadingPage = await setIsLoading();
-    fetchQueryResults({ century, classification, queryString }) = await setSearchResults();
-
+    setIsLoading(true);
+    try {
+   const results = await fetchQueryResults({ century, classification, queryString });
+      setSearchResults(results);
+    } catch (error) {
+      console.errror(error)
+    } finally {
     setIsLoading(false);
-    setSearchResults(isLoadingPage);
+    }
 //Unfinished function
-
-
   }}>
     <fieldset>
       <label htmlFor="keywords">Query</label>
